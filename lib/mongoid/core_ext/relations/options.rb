@@ -1,7 +1,9 @@
 module Mongoid
   module Relations
     module Options
-      COMMON << :versioned
+      common = COMMON
+      send :remove_const, :COMMON
+      send :const_set, :COMMON, common + [:versioned]
     end
   end
 end
